@@ -13,33 +13,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user1 = DB::table('users')->where('username', 'user1')->exists();
-        if(!$user1)
+        $master = DB::table('users')->where('username', 'master')->exists();
+        if(!$master)
         {
             User::create([
-                'id'    => 1,
-                'name'    => 'User1',
-                'username'    => 'user1',
-                'email'    => 'user1@test.com',
-                'password'   =>  Hash::make('User1#2019'),
+                'name'    => 'Master',
+                'username'    => 'master',
+                'email'    => 'master@test.com',
+                'password'   =>  Hash::make('Master#2019'),
                 'remember_token' =>  str_random(10),
                 'token' =>  null,
                 'active' =>  1,
             ]);
         }
-        $user2 = DB::table('users')->where('username', 'user2')->exists();
-        if(!$user2)
-        {
-            User::create([
-                'id'    => 2,
-                'name'    => 'User2',
-                'username'    => 'user2',
-                'email'    => 'user2@test.com',
-                'password'   =>  Hash::make('User2#2019'),
-                'remember_token' =>  str_random(10),
-                'token' =>  null,
-                'active' =>  1,
-            ]);
-        }
+        
+        factory(App\User::class, 2)->create();
     }
 }
