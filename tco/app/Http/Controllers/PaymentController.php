@@ -17,7 +17,7 @@ class PaymentController extends Controller
         
     }
 
-    public function list()
+    public function index()
     {   
     	$suppliers = Supplier::get();
         $payments = Payment::get();
@@ -51,12 +51,12 @@ class PaymentController extends Controller
         }
     }
 
-    public function new($supplier)
+    public function store($supplier)
     {   
         return view('payments.new')->with('supplier', $supplier);
     }
 
-    public function edit($id)
+    public function update($id)
     {   
     	$payment = Payment::find($id);
         return view('payments.edit')->with('payment', $payment);

@@ -15,6 +15,8 @@
                     @endif
 
                     Você está logado no sistema.
+                    
+                    {{ mail("master@localhost", "subject", "message", "From: master@localhost") }}
                 </div>
             </div>
         </div>

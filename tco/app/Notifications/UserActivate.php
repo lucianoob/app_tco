@@ -40,15 +40,8 @@ class UserActivate extends Notification
      */
     public function toMail($notifiable)
     {
-        /*return (new MailMessage)
-            ->from(env('ADMIN_MAIL_ADDRESS'))
-            ->subject('Activate Account!')
-            ->greeting(sprintf('Hi, %s', $this->user->name))
-            ->line('We just noticed that you created a new account. You will need to activate your account to sign in into this account.')
-            ->action('Activate', route('activate', [$this->user->token]))
-            ->line('Thank you for using our application!');*/
         return (new MailMessage)
-            ->from('iautomate.br@gmail.com')
+            ->from('master@apptco.com')
             ->subject('Activate Account!')
             ->greeting(sprintf('Hi, %s', $this->user->name))
             ->line('We just noticed that you created a new account. You will need to activate your account to sign in into this account.')
