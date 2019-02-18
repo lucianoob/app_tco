@@ -13,10 +13,14 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function view() {
+        return view('admin.users');
+    }
+
     public function edit(User $user)
     {   
-        $user = Auth::user();
-        return view('users.edit')->with('user', $user);
+        //$user = Auth::user();
+        return view('user')->with('user', $user);
     }
 
     public function update(User $user)
@@ -35,7 +39,7 @@ class UserController extends Controller
 
 	        $user->save();
 
-	        return view('users.edit')->with('user', $user)->with('status', 'Os dados do usuário foram salvos com sucesso.'); 
+	        return view('user')->with('user', $user)->with('status', 'Os dados do usuário foram salvos com sucesso.'); 
 	    }
 	    else
 	    {
@@ -51,7 +55,7 @@ class UserController extends Controller
 
 	        $user->save();
 
-	        return view('users.edit')->with('user', $user)->with('status', 'Os dados do usuário foram salvos com sucesso.');
+	        return view('user')->with('user', $user)->with('status', 'Os dados do usuário foram salvos com sucesso.');
 	    }
     }
 }

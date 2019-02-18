@@ -7,7 +7,7 @@ class RegisterTest extends TestCase
     public function testWelcomeToRegister()
     {
         $this->visit('/')
-             ->click('Register')
+             ->click('lnkRegister')
              ->seePageIs('/register');
     }
     

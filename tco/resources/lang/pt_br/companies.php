@@ -3,6 +3,7 @@
 
 return [
     'title' => 'Dados da Empresa',
+    'user' => 'Usuário',
     'name' => 'Nome',
     'cnpj' => 'CNPJ',
     'email' => 'Email',

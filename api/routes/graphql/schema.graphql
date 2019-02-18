@@ -1,0 +1,93 @@
+"A datetime string with format 'Y-m-d H:i:s', e.g. '2018-01-01 13:00:00'."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"A date string with format 'Y-m-d', e.g. '2011-05-23'."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+type Query {
+    companies: [Company!]! @paginate(type: "paginator" model: "App\\Company")
+    company(id: ID @eq): Company @find(model: "App\\Company")
+    suppliers: [Supplier!]! @paginate(type: "paginator" model: "App\\Supplier")
+    supplier(id: ID @eq): Supplier @find(model: "App\\Supplier")
+    payments: [Payment!]! @paginate(type: "paginator" model: "App\\Payment")
+    payment(id: ID @eq): Payment @find(model: "App\\Payment")
+}
+
+type Mutation {
+    createCompany(
+        name: String @rules(apply: ["required"])
+        cnpj: String @rules(apply: ["required"])
+        email: String @rules(apply: ["required", "email", "unique:companies,email"])
+        phone: String @rules(apply: ["required"])
+        cep: String @rules(apply: ["required"])
+        address: String @rules(apply: ["required"])
+    ): Company @create(model: "App\\Company")
+    updateCompany(
+        id: ID @rules(apply: ["required"])
+        cnpj: String @rules(apply: ["required"])
+        email: String @rules(apply: ["required", "email", "unique:companies,email"])
+        phone: String @rules(apply: ["required"])
+        cep: String @rules(apply: ["required"])
+        address: String @rules(apply: ["required"])
+    ): Company @update(model: "App\\Company")
+    deleteCompany(
+        id: ID @rules(apply: ["required"])
+    ): Company @delete(model: "App\\Company")
+    createSupplier(
+        company_id: Int @rules(apply: ["required"])
+        name: String @rules(apply: ["required"])
+        phone: String @rules(apply: ["required"])
+    ): Supplier @create(model: "App\\Supplier")
+    updateSupplier(
+        id: ID @rules(apply: ["required"])
+        company_id: Int @rules(apply: ["required"])
+        name: String @rules(apply: ["required"])
+        phone: String @rules(apply: ["required"])
+    ): Supplier @update(model: "App\\Supplier")
+    deleteSupplier(
+        id: ID @rules(apply: ["required"])
+    ): Supplier @delete(model: "App\\Supplier")
+    createPayment(
+        supplier_id: Int @rules(apply: ["required"])
+        description: String @rules(apply: ["required"])
+        payment: Float @rules(apply: ["required"])
+    ): Payment @create(model: "App\\Payment")
+    updatePayment(
+        id: ID @rules(apply: ["required"])
+        supplier_id: Int @rules(apply: ["required"])
+        description: String @rules(apply: ["required"])
+        payment: Float @rules(apply: ["required"])
+    ): Payment @update(model: "App\\Payment")
+    deletePayment(
+        id: ID @rules(apply: ["required"])
+    ): Payment @delete(model: "App\\Payment")
+}
+
+type Company {
+    id: ID!
+    name: String!
+    cnpj: String!
+    email: String!
+    phone: String!
+    cep: String!
+    address: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Supplier {
+    id: ID!
+    name: String!
+    phone: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Payment {
+    id: ID!
+    supplier_id: Int!
+    description: String!
+    payment: Float!
+    created_at: DateTime!
+    updated_at: DateTime!
+}

@@ -21,23 +21,20 @@ Route::get('/activate/{token}', 'Auth\RegisterController@activate')->name('activ
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/users/{user}',  ['as' => 'users.edit', 'uses' => 'UserController@edit']);
-Route::patch('/users/{user}',  ['as' => 'users.update', 'uses' => 'UserController@update']);
+Route::get('/users/all', ['as' => 'users.view', 'uses' => 'UserController@view']);
+Route::get('/users/{user}',  ['as' => 'user.edit', 'uses' => 'UserController@edit']);
+Route::patch('/users/{user}',  ['as' => 'user.update', 'uses' => 'UserController@update']);
 
-Route::get('/companies/{user}',  ['as' => 'companies.edit', 'uses' => 'CompanyController@edit']);
-Route::patch('/companies/{company}',  'CompanyController@update')->name('companies.update');
+Route::get('/companies/all', ['as' => 'companies.view', 'uses' => 'CompanyController@view']);
+Route::get('/companies/',  ['as' => 'companies.edit', 'uses' => 'CompanyController@edit']);
+Route::patch('/companies/{company}',  ['as' => 'companies.update', 'uses' => 'CompanyController@update']);
 
-Route::get('/suppliers/list/', ['as' => 'suppliers.list', 'uses' => 'SupplierController@list']);
-Route::get('/suppliers/new/',  ['as' => 'suppliers.new', 'uses' => 'SupplierController@new']);
-Route::post('/suppliers/new/{id}',  ['as' => 'suppliers.new', 'uses' => 'SupplierController@save']);
-Route::get('/suppliers/edit/{id}',  ['as' => 'suppliers.edit', 'uses' => 'SupplierController@edit']);
-Route::post('/suppliers/edit/{id}',  ['as' => 'suppliers.edit', 'uses' => 'SupplierController@save']);
-Route::get('/suppliers/remove/{id}',  ['as' => 'suppliers.remove', 'uses' => 'SupplierController@remove']);
+Route::get('/suppliers/notification/{id}', ['as' => 'suppliers.notification', 'uses' => 'SupplierController@notification']);
+Route::get('/suppliers/activate/{token}', ['as' => 'suppliers.activate', 'uses' => 'SupplierController@activate']);
+Route::get('/suppliers/all', ['as' => 'suppliers.view', 'uses' => 'SupplierController@view']);
+Route::get('/suppliers/', ['as' => 'suppliers.list', 'uses' => 'SupplierController@list']);
+Route::post('/suppliers/',  ['as' => 'suppliers.edit', 'uses' => 'SupplierController@edit']);
 
-Route::get('/payments/list/', ['as' => 'payments.list', 'uses' => 'PaymentController@list']);
-Route::post('/payments/list/', ['as' => 'payments.list', 'uses' => 'PaymentController@filter']);
-Route::get('/payments/new/{supplier}',  ['as' => 'payments.new', 'uses' => 'PaymentController@new']);
-Route::post('/payments/new/{id}',  ['as' => 'payments.new', 'uses' => 'PaymentController@save']);
-Route::get('/payments/edit/{id}',  ['as' => 'payments.edit', 'uses' => 'PaymentController@edit']);
-Route::post('/payments/edit/{id}',  ['as' => 'payments.edit', 'uses' => 'PaymentController@save']);
-Route::get('/payments/remove/{id}',  ['as' => 'payments.remove', 'uses' => 'PaymentController@remove']);
+Route::get('/payments/all', ['as' => 'payments.view', 'uses' => 'PaymentController@view']);
+Route::get('/payments/', ['as' => 'payments.list', 'uses' => 'PaymentController@list']);
+Route::post('/payments/', ['as' => 'payments.edit', 'uses' => 'PaymentController@edit']);

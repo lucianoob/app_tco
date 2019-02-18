@@ -7,7 +7,7 @@ class LoginTest extends TestCase
     public function testWelcomeToLogin()
     {
         $this->visit('/')
-             ->click('Login')
+             ->click('lnkLogin')
              ->seePageIs('/login');
     }
 

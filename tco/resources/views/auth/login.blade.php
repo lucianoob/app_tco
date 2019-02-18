@@ -66,6 +66,16 @@
                         </div>
                     </form>
                 </div>
+                @if (isset($status))
+                    <div class="card-footer alert-success">
+                        {{ $status }}
+                    </div>
+                @endif
+                @if (isset($error))
+                    <div class="card-footer alert-danger">
+                        {{ $error }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

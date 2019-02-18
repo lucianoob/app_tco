@@ -81,7 +81,7 @@ class LoginController extends Controller
     {
         $field = $this->field($request);
 
-        $messages = ["{$this->username()}.exists" => 'The account you are trying to login is not activated or it has been disabled.'];
+        $messages = ["{$this->username()}.exists" => 'Sua conta não está ativada ou é inválida.'];
 
         $this->validate($request, [
             $this->username() => "required|exists:users,{$field},active," . User::ACTIVE, 

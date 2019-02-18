@@ -104,8 +104,8 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        return redirect()->route('login')
-            ->with(['success' => 'Congratulations! your account is registered, you will shortly receive an email to activate your account.']);
+        return view('auth.login')
+            ->with('status', 'Parabéns! sua conta foi registrada, acesse o email para ativar a conta.');
     }
 
     /**
@@ -117,12 +117,12 @@ class RegisterController extends Controller
 
         if (empty($user)) {
             return redirect()->to('/')
-                ->with(['error' => 'Your activation code is either expired or invalid.']);
+                ->with('error', 'Seu código de ativação expirou ou é inválido.');
         }
 
         $user->update(['token' => null, 'active' => User::ACTIVE]);
 
-        return redirect()->route('login')
-            ->with(['success' => 'Congratulations! your account is now activated.']);
+        return view('auth.login')
+            ->with('status', 'Parabéns! sua conta foi ativada com sucesso.');
     }
 }

@@ -14,7 +14,11 @@
         
         <!-- Styles -->
         <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
-        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>        
     </head>
     <body>
         <video autoplay muted loop id="video_background">
@@ -24,12 +28,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}"><i class="fas fa-tablet-alt"></i> {{ __('messages.dashboard') }}</a>
+                    <a href="{{ url('/home') }}" id="lnkHome"><i class="fas fa-tablet-alt"></i> {{ __('messages.dashboard') }}</a>
                     @else
-                        <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> {{ __('messages.login') }}</a>
+                        <a href="{{ route('login') }}" id="lnkLogin"><i class="fas fa-sign-in-alt"></i> {{ __('messages.login') }}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> {{ __('messages.register') }}</a>
+                            <a href="{{ route('register') }}" id="lnkRegister"><i class="fas fa-user-plus"></i> {{ __('messages.register') }}</a>
                         @endif
                     @endauth
                 </div>
@@ -39,6 +43,16 @@
                 <div class="title m-b-md" style="font-size: 54px !important;">
                     <i class="fab fa-laravel"></i> {{ config('app.name') }}
                 </div>
+                @if (session()->has('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
         </div>
     </body>

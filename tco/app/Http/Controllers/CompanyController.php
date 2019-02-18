@@ -9,15 +9,13 @@ use App\Company;
 
 class CompanyController extends Controller
 {
-    public function __construct()
-    {
-        
+    public function view() {
+        return view('admin.companies');
     }
 
     public function edit()
     {   
-        $company = User::find(Auth::user()->id)->company;
-        return view('companies.edit')->with('company', $company);
+        return view('company')->with('company', User::find(Auth::user()->id)->company);
     }
 
     public function update(Company $company)
@@ -31,6 +29,6 @@ class CompanyController extends Controller
 
         $company->save();
 
-        return view('companies.edit')->with('company', $company)->with('status', 'Os dados da empresa foram salvos com sucesso.');
+        return view('company')->with('company', $company)->with('status', 'Os dados da empresa foram salvos com sucesso.');
     }
 }

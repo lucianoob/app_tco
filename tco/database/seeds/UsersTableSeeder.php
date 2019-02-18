@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' =>  str_random(10),
                 'token' =>  null,
                 'active' =>  1,
+                'admin' =>  1,
             ]);
         }
         
