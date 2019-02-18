@@ -11,6 +11,8 @@ echo -e "${NC}"
 
 cd laradock/
 
+echo -e "\n#IMPORTANT: Go to site 'https://mailtrap.io/inboxes' and get credential for receive test emails."; read dummy;
+
 echo -e "\n#Docker: Start (Nginx/MySQL/PHPMyAdmin)"
 sudo docker-compose up -d nginx mysql phpmyadmin
 
@@ -55,10 +57,10 @@ echo -e "\n#Docker: Information of new containers..."
 sudo docker ps -a 
 
 echo -e "\n#PHPUnit: Execute feature and unit tests... (App)"
-#sudo docker-compose exec workspace sh -c "cd tco && ./vendor/phpunit/phpunit/phpunit --debug"
+sudo docker-compose exec workspace sh -c "cd tco && ./vendor/phpunit/phpunit/phpunit --debug"
 
 echo -e "\n#PHPUnit: Execute feature and unit tests... (API)"
-#sudo docker-compose exec workspace sh -c "cd api && ./vendor/phpunit/phpunit/phpunit --debug"
+sudo docker-compose exec workspace sh -c "cd api && ./vendor/phpunit/phpunit/phpunit --debug"
 
 echo -e "${COLOR}"
 echo -e "##############################"
