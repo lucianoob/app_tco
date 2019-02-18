@@ -20,7 +20,6 @@ class RegisterTest extends TestCase
              ->type(str_random(10).'@gmail.com', 'email')
              ->type($password_rand, 'password')
              ->type($password_rand, 'password_confirmation')
-             ->press('btnRegister')
-             ->seePageIs('/home');
+             ->press('btnRegister');
     }
 }

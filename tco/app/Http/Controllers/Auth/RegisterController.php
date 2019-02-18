@@ -80,8 +80,8 @@ class RegisterController extends Controller
         $company = Company::create([
             'user_id' => $user->id,
             'name' => $user->name,
-            'cnpj' => '',
-            'email' => '',
+            'cnpj' => sprintf('%03d.%03d.%03d/0001-%02d', rand(0, 999), rand(0, 999), rand(0, 999), rand(0, 99)),
+            'email' => $user->email,
             'phone' => '',
             'cep' => '',
             'address' => '',

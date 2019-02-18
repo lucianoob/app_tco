@@ -15,12 +15,7 @@ class SupplierTest extends TestCase
     public function testSupplierStore()
     {
         $company = Company::get()->random(1)->first();
-        //echo '<pre>';
-        //print_r($user);
         $supplier = factory(Supplier::class)->make(["company_id" => $company->id])->toArray();
-        //echo '<pre>';
-        //print_r($supplier);
-        //var_dump($supplier->toArray());
         $response = $this->json('POST', '/api/supplier/', $supplier)
             ->assertResponseStatus('201')
             ->seeJsonStructure([

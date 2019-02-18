@@ -68,23 +68,23 @@
                             </li>
                             @if (Auth::user()->admin == 1)
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (Route::is('companies*') ? 'active' : '') }}" href="{{ route('companies.view') }}"><i class="fas fa-building"></i> {{ __('messages.companies') }}</a>
+                                    <a id="lnkCompanies" class="nav-link {{ (Route::is('companies*') ? 'active' : '') }}" href="{{ route('companies.view') }}"><i class="fas fa-building"></i> {{ __('messages.companies') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (Route::is('suppliers*') ? 'active' : '') }}" href="{{ route('suppliers.view') }}"><i class="fas fa-warehouse"></i> {{ __('messages.suppliers') }}</a>
+                                    <a id="lnkSuppliers" class="nav-link {{ (Route::is('suppliers*') ? 'active' : '') }}" href="{{ route('suppliers.view') }}"><i class="fas fa-warehouse"></i> {{ __('messages.suppliers') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (Route::is('payments*') ? 'active' : '') }}" href="{{ route('payments.view') }}""><i class="fas fa-money-bill-alt"></i> {{ __('messages.payments') }}</a>
+                                    <a id="lnkPayments" class="nav-link {{ (Route::is('payments*') ? 'active' : '') }}" href="{{ route('payments.view') }}""><i class="fas fa-money-bill-alt"></i> {{ __('messages.payments') }}</a>
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (Route::is('companies*') ? 'active' : '') }}" href="{{ route('companies.edit') }}"><i class="fas fa-building"></i> {{ __('messages.company_data') }}</a>
+                                    <a id="lnkCompanies" class="nav-link {{ (Route::is('companies*') ? 'active' : '') }}" href="{{ route('companies.edit') }}"><i class="fas fa-building"></i> {{ __('messages.company_data') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (Route::is('suppliers*') ? 'active' : '') }}" href="{{ route('suppliers.list') }}"><i class="fas fa-warehouse"></i> {{ __('messages.suppliers') }}</a>
+                                    <a id="lnkSuppliers" class="nav-link {{ (Route::is('suppliers*') ? 'active' : '') }}" href="{{ route('suppliers.list') }}"><i class="fas fa-warehouse"></i> {{ __('messages.suppliers') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (Route::is('payments*') ? 'active' : '') }}" href="{{ route('payments.list') }}""><i class="fas fa-money-bill-alt"></i> {{ __('messages.payments') }}</a>
+                                    <a id="lnkPayments" class="nav-link {{ (Route::is('payments*') ? 'active' : '') }}" href="{{ route('payments.list') }}""><i class="fas fa-money-bill-alt"></i> {{ __('messages.payments') }}</a>
                                 </li>
                             @endif
                             
