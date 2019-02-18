@@ -27,8 +27,8 @@
                         <button class="btn btn-info float-left" id="btnCopy" disabled>Copiar</button>
                         <button class="btn btn-danger float-right" id="btnDelete" disabled>Excluir</button>
                     </div>
+                    <div class="card-footer alert-info text-center"><i class="fas fa-info-circle"></i> Os fornecedores inativos não poderão receber pagamentos.</div>
                 </div>
-
             </div>
         </div>
     </div>

@@ -13,7 +13,8 @@ class PaymentController extends Controller
     }
     
     public function list() {
-    	$suppliers = Supplier::where("company_id", Auth::user()->company->id)->get();
+    	$suppliers = Supplier::where("company_id", Auth::user()->company->id)
+                             ->where("active", Supplier::ACTIVE)->get();
         return view('payments')->with('suppliers', $suppliers);
     }
 
